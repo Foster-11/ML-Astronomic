@@ -1,0 +1,14 @@
+version: "3.9"
+
+services:
+
+  notebook:
+    build: .
+    image: cnn_cifar10-notebook
+    container_name: cnn_cifar10_jupyter
+    ports:
+      - "8888:8888"       # Abre http://localhost:8888 en tu navegador
+    volumes:
+      - ./outputs:/app/outputs
+      - ./models:/app/models
+      - ./cifar10_cnn.ipynb:/app/cifar10_cnn.ipynb
