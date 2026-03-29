@@ -12,7 +12,7 @@ pipeline {
         stage('Clonar repositorio') {
             steps {
                 git branch: 'teo', url: 'https://github.com/Foster-11/ML-Astronomic.git'
-                sh 'ls -la'
+                // sh 'ls -la'
             }
         }
 

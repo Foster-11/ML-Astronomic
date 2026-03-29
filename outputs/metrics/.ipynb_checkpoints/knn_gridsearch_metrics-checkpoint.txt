@@ -1,0 +1,3 @@
+Accuracy_GridSearch: 0.9967
+Mejor_k: 5
+Mejor_metrica: euclidean

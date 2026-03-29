@@ -12,6 +12,11 @@ Este es el punto de entrada para Docker y Jenkins.
 """
 
 import sys
+import os
+
+# Agregar carpeta src al path para encontrar los módulos
+sys.path.insert(0, os.path.dirname(os.path.abspath(__file__)))
+
 from pathlib import Path
 
 # Crear carpetas de salida si no existen
@@ -24,8 +29,8 @@ def run_data_analysis():
     print("\n" + "=" * 50)
     print("  ANÁLISIS EXPLORATORIO")
     print("=" * 50)
-    from data_loader import load_dataset
-    from data_analysis import (
+    from data_loader import (
+        load_dataset,
         print_basic_info,
         print_statistics,
         print_correlations,
@@ -50,8 +55,9 @@ def run_knn():
         plot_confusion_matrix,
         save_metrics,
         save_model,
+        train_knn_gridsearch,
+        plot_grid_search,
     )
-    from knn import train_knn_gridsearch, plot_grid_search
     from sklearn.metrics import accuracy_score
 
     df = load_dataset("dataset/sdss_sample.csv")
@@ -92,8 +98,13 @@ def run_linear_regression():
     print("  REGRESIÓN LINEAL")
     print("=" * 50)
     from data_loader import load_dataset, prepare_regression_data
-    from linear_regression import train_linear_regression, evaluate_regression
-    from linear_regression import plot_real_vs_predicted, save_metrics, save_model
+    from linear_regression import (
+        train_linear_regression,
+        evaluate_regression,
+        plot_real_vs_predicted,
+        save_metrics,
+        save_model,
+    )
 
     df = load_dataset("dataset/sdss_sample.csv")
     X_train, X_test, y_train, y_test, scaler = prepare_regression_data(df)

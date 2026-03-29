@@ -7,7 +7,7 @@ RUN pip install --no-cache-dir -r requirements.txt
 
 COPY . .
 
-RUN mkdir -p outputs models
+RUN mkdir -p outputs/plots outputs/metrics models
 
 EXPOSE 8888
 
