@@ -114,7 +114,7 @@ def save_model(model, filepath: str):
 
 
 # ──────────────────────────────────────────────
-# Ejecución principal
+# Ejecucion principal
 # ──────────────────────────────────────────────
 
 if __name__ == "__main__":
