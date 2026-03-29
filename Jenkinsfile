@@ -42,6 +42,27 @@ pipeline {
                 '''
             }
         }
+
+        stage('Ejecutar notebooks') {
+            steps {
+                sh '''
+                docker exec ml_container jupyter nbconvert \
+                    --to notebook \
+                    --execute notebooks/knn.ipynb \
+                    --output outputs/knn_output.ipynb
+
+                docker exec ml_container jupyter nbconvert \
+                    --to notebook \
+                    --execute notebooks/linearRegression.ipynb \
+                    --output outputs/linearRegression_output.ipynb
+
+                docker exec ml_container jupyter nbconvert \
+                    --to notebook \
+                    --execute notebooks/kmeans.ipynb \
+                    --output outputs/kmeans_output.ipynb
+                '''
+            }
+        }
     }
 
     post {
